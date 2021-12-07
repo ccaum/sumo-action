@@ -1,0 +1,20 @@
+name: "Diff App Builds"
+description: "Calculate the differences between two app builds"
+inputs:
+  buildA:
+    description: "The base app build to use for the comparison."
+    required: true
+  buildB:
+    description: "The app build to compare for differences against buildA."
+    required: true
+outputs:
+  changelog:
+    description: "A list of the differences between buildA and buildB"
+runs:
+  using: "docker"
+  image: "ccaum/sumo-cli"
+  args:
+    - "app"
+    - "diff-builds"
+    - ${{ inputs.buildA }}
+    - ${{ inputs.buildB }}
