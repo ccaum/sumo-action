@@ -11,4 +11,5 @@ runs:
   args:
     - app
     - build
-    - -o ${{ inputs.output-file }}
+    - -o
+    - ${{ inputs.output-file }}
