@@ -1,10 +1,6 @@
 name: "Build Sumo Logic App"
 description: "Run the sumo CLI as a GitHub action"
 inputs:
-  stream:
-    description: "The application stream to build. One of upstream, midstream, or downstream."
-    required: true
-    default: "downstream"
   output-file:
     description: "The file to write the build result to"
     required: true
@@ -13,7 +9,6 @@ runs:
   using: "docker"
   image: "docker://ccaum/sumo-cli:latest"
   args:
-    - "app"
-    - "build"
-    - ${{ inputs.stream }}
-    - ${{ inputs.output-file }}
+    - app
+    - build
+    - -o ${{ inputs.output-file }}
