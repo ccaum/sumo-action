@@ -1,0 +1,20 @@
+name: "Diff App Streams"
+description: "Calculate the differences between two app streams"
+inputs:
+  streamA:
+    description: "The base app stream to use for the comparison. One of upstream, midstream, or downstream"
+    required: true
+  streamB:
+    description: "The app build to compare for differences against streamA. One of upstream, midstream, or downstream"
+    required: true
+outputs:
+  changelog:
+    description: "A list of the differences streamB applies to streamA"
+runs:
+  using: "docker"
+  image: "docker://ccaum/sumo-cli:latest"
+  args:
+    - "app"
+    - "diff-streams"
+    - ${{ inputs.streamA }}
+    - ${{ inputs.streamB }}

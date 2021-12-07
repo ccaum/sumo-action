@@ -9,12 +9,12 @@ inputs:
     required: true
 outputs:
   changelog:
-    description: "A list of the differences between buildA and buildB"
+    description: "A list of the differences between streamA and streamB"
 runs:
   using: "docker"
   image: "docker://ccaum/sumo-cli:latest"
   args:
     - "app"
-    - "diff-builds"
+    - "diff-streams"
     - ${{ inputs.buildA }}
     - ${{ inputs.buildB }}
