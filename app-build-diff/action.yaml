@@ -12,7 +12,7 @@ outputs:
     description: "A list of the differences between buildA and buildB"
 runs:
   using: "docker"
-  image: "ccaum/sumo-cli"
+  image: "docker://ccaum/sumo-cli:latest"
   args:
     - "app"
     - "diff-builds"
