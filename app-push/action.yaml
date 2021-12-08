@@ -31,5 +31,7 @@ runs:
   args:
     - "app"
     - "push"
+    - "-d"
+    - ${{ inputs.parent_folder_id }}
     - ${{ inputs.args }}
     - ${{ inputs.file }}
