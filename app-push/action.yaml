@@ -1,0 +1,28 @@
+name: "Push application build"
+description: "Push an application build file to your Sumo Logic account"
+inputs:
+  file:
+    description: "The path to the build file (json file) to push to your Sumo Logic account"
+    required: true
+  args:
+    description: "Extra arguments to pass to the `sumo app push` command"
+    required: false
+  parent_folder_id:
+    description: "The ID of the folder to install the application in"
+    required: true
+  deployment_region:
+    description: "The region your Sumo Logic account is deployed in"
+    required: true
+    default: us1
+env:
+  SUMO_ACCESS_ID: ${{ secrets.SUMO_ACCESS_ID }}
+  SUMO_ACCESS_KEY: ${{ secrets.SUMO_ACCESS_KEY }}
+  DEPLOYMENT: ${{ inputs.deployment_region }}
+runs:
+  using: "docker"
+  image: "docker://ccaum/sumo-cli:latest"
+  args:
+    - "app"
+    - "push"
+    - ${{ inputs.args }}
+    - ${{ inputs.file }}
