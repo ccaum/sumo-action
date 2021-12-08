@@ -5,6 +5,12 @@ inputs:
     description: "The path to the build file (json file) to push to your Sumo Logic account"
     required: true
     default: build.json
+  access-id:
+    description: "The Sumo Logic access ID"
+    required: true
+  access-key:
+    description: "The Sumo Logic access key"
+    required: true
   args:
     description: "Extra arguments to pass to the `sumo app push` command"
     required: false
@@ -19,8 +25,8 @@ runs:
   using: "docker"
   image: "docker://ccaum/sumo-cli:latest"
   env:
-    SUMO_ACCESS_ID: ${{ secrets.SUMO_ACCESS_ID }}
-    SUMO_ACCESS_KEY: ${{ secrets.SUMO_ACCESS_KEY }}
+    SUMO_ACCESS_ID: ${{ inputs.access-id }}
+    SUMO_ACCESS_KEY: ${{ inputs.access-key }}
     DEPLOYMENT: ${{ inputs.deployment_region }}
   args:
     - "app"
