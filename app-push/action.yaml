@@ -27,7 +27,7 @@ runs:
   env:
     SUMO_ACCESS_ID: ${{ inputs.access-id }}
     SUMO_ACCESS_KEY: ${{ inputs.access-key }}
-    DEPLOYMENT: ${{ inputs.deployment_region }}
+    SUMO_DEPLOYMENT: ${{ inputs.deployment_region }}
   args:
     - "app"
     - "push"
