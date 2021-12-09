@@ -1,0 +1,20 @@
+name: "Diff App Streams"
+description: "Calculate the differences between two app overlays"
+inputs:
+  overlayA:
+    description: "The base app overlay to use for the comparison. One of base, middle, or final"
+    required: true
+  overlayB:
+    description: "The app build to compare for differences against overlayA. One of base, middle, or final"
+    required: true
+outputs:
+  changelog:
+    description: "A list of the differences overlayB applies to overlayA"
+runs:
+  using: "docker"
+  image: "docker://ccaum/sumo-cli:latest"
+  args:
+    - "app"
+    - "diff-overlays"
+    - ${{ inputs.overlayA }}
+    - ${{ inputs.overlayB }}
