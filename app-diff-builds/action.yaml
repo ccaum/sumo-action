@@ -15,6 +15,6 @@ runs:
   image: "docker://ccaum/sumo-cli:latest"
   args:
     - "app"
-    - "diff-streams"
+    - "diff-builds"
     - ${{ inputs.buildA }}
     - ${{ inputs.buildB }}
