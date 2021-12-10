@@ -5,8 +5,12 @@ inputs:
     description: "The file to write the build result to"
     required: true
     default: "build.json"
+  app-path:
+    description: "The path to the application root directory"
+    default: ./
 runs:
   using: "docker"
+  working-directory: ${{ inputs.app-path }}
   image: "docker://ccaum/sumo-cli:latest"
   args:
     - app
